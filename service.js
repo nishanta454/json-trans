@@ -1,14 +1,15 @@
 'use strict';
 var transform = require("node-json-transform").transform;
 var db = require('./db')
+var transformer = require('./polo')
 
 module.exports = {
-    transData: function (req, callback) {
+    convertJson: function (req, callback) {
         this.getMapping(req.activity, function (error, data) {
             if (error) {
                 callback("Invalid Activity For Transformation");
             } else {
-                callback(transform(req.payload, data));
+                transformer.transform(req.payload, data, {"callback": callback})
             }
         })
     },
