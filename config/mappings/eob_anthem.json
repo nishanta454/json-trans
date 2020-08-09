@@ -1,0 +1,165 @@
+{
+    "type": "object",
+    "fields": [
+        {
+            "path": "requestContext.appName",
+            "value": "jsonRequest.requestMetaData.appName",
+            "defVal": ""
+        },
+        {
+            "path": "requestContext.lineOfBusiness",
+            "value": "jsonRequest.requestMetaData.lineOfBusiness",
+            "defVal": ""
+        },
+        {
+            "path": "requestContext.conversationID",
+            "value": "jsonRequest.requestMetaData.conversationID",
+            "defVal": ""
+        },
+        {
+            "path": "requestPayload.messageData.campaignId",
+            "value": "jsonRequest.requestPayloadData.data.campaignID",
+            "defVal": ""
+        },
+        {
+            "path": "requestPayload.messageData.clientSet",
+            "value": "jsonRequest.requestPayloadData.data.clientSet",
+            "defVal": ""
+        },
+        {
+            "path": "requestPayload.messageData.clientId",
+            "value": "jsonRequest.requestPayloadData.data.clientID",
+            "defVal": ""
+        },
+        {
+            "path": "requestPayload.messageData.channel",
+            "value": "jsonRequest.requestPayloadData.data.commDeliveryChannel",
+            "defVal": "email"
+        },
+        {
+            "path": "requestPayload.messageData.language",
+            "value": "jsonRequest.requestPayloadData.data.languageIndicator",
+            "defVal": "1"
+        },
+        {
+            "path": "requestPayload.messageData.cagm.carrier",
+            "value": "jsonRequest.requestPayloadData.data.carrierID",
+            "defVal": ""
+        },
+        {
+            "path": "requestPayload.messageData.cagm.account",
+            "value": "jsonRequest.requestPayloadData.data.accountID",
+            "defVal": ""
+        },
+        {
+            "path": "requestPayload.messageData.cagm.group",
+            "value": "jsonRequest.requestPayloadData.data.groupID",
+            "defVal": ""
+        },
+        {
+            "path": "requestPayload.messageData.cagm.member",
+            "value": "jsonRequest.requestPayloadData.data.externalID",
+            "defVal": "jsonRequest.requestPayloadData.data.memberID"
+        },
+        {
+            "path": "requestPayload.messageData.lobCode",
+            "value": "jsonRequest.requestPayloadData.data.lob",
+            "defVal": "3"
+        },
+        {
+            "path": "requestPayload.messageData.stateCode",
+            "value": "jsonRequest.requestPayloadData.data.stateCode",
+            "defVal": "0"
+        },
+        {
+            "path": "requestPayload.additionalData.AnthemEOBRecipientData.displayName",
+            "value": "jsonRequest.requestPayloadData.data.firstName",
+            "defVal": ""
+        },
+        {
+            "path": "requestPayload.additionalData.AnthemEOBRecipientData.firstName",
+            "value": "jsonRequest.requestPayloadData.data.firstName",
+            "defVal": ""
+        },
+        {
+            "path": "requestPayload.additionalData.AnthemEOBRecipientData.lastName",
+            "value": "jsonRequest.requestPayloadData.data.lastName",
+            "defVal": ""
+        },
+        {
+            "path": "requestPayload.additionalData.AnthemEOBRecipientData.emailAddress",
+            "value": "jsonRequest.requestPayloadData.data.commContactInfo",
+            "defVal": ""
+        },
+        {
+            "path": "requestPayload.additionalData.AnthemEOBRecipientData.planNameType",
+            "value": "jsonRequest.requestPayloadData.data.CBSData.planName",
+            "defVal": ""
+        },
+        {
+            "path": "requestPayload.additionalData.AnthemEOBRecipientData.logoName",
+            "value": "jsonRequest.requestPayloadData.data.CBSData.logoName",
+            "defVal": "IngenioRx"
+        },
+        {
+            "path": "requestPayload.additionalData.AnthemEOBRecipientData.myAccountURL",
+            "value": "jsonRequest.requestPayloadData.data.CBSData.myAccountURL",
+            "defVal": ""
+        },
+        {
+            "path": "requestPayload.additionalData.AnthemEOBRecipientData.federalStatement",
+            "value": "jsonRequest.requestPayloadData.data.CBSData.federalStatement",
+            "defVal": ""
+        },
+        {
+            "path": "requestPayload.additionalData.AnthemEOBRecipientData.mailLegalTagLine",
+            "value": "jsonRequest.requestPayloadData.data.CBSData.mailLegalTagLine",
+            "defVal": ""
+        },
+        {
+            "path": "requestPayload.additionalData.AnthemEOBRecipientData.senderName",
+            "value": "jsonRequest.requestPayloadData.data.CBSData.senderName",
+            "defVal": ""
+        },
+        {
+            "path": "requestPayload.additionalData.AnthemEOBRecipientData.privacyURL",
+            "value": "jsonRequest.requestPayloadData.data.CBSData.privacyURL",
+            "defVal": "view our policy"
+        },
+        {
+            "path": "requestPayload.additionalData.AnthemEOBRecipientData.profileCommunicationsPreferences",
+            "value": "jsonRequest.requestPayloadData.data.CBSData.profileCommunicationsPreferences",
+            "defVal": "Manage Subscriptions"
+        },
+        {
+            "path": "requestPayload.additionalData.AnthemEOBRecipientData.homePageURL",
+            "value": "jsonRequest.requestPayloadData.data.CBSData.homePageURL",
+            "defVal": "Update Profile"
+        },
+        {
+            "path": "requestPayload.additionalData.AnthemEOBRecipientData.hippaURL",
+            "value": "jsonRequest.requestPayloadData.data.CBSData.hippaURL",
+            "defVal": "HIPPA"
+        },
+        {
+            "path": "requestPayload.additionalData.AnthemEOBRecipientData.termsAndConditionURL",
+            "value": "jsonRequest.requestPayloadData.data.CBSData.termsAndConditionURL",
+            "defVal": "Terms and Conditions"
+        },
+        {
+            "path": "requestPayload.additionalData.AnthemEOBRecipientData.providerLogoURL",
+            "value": "jsonRequest.requestPayloadData.data.CBSData.providerLogoURL",
+            "defVal": "IngenioRx"
+        },
+        {
+            "path": "requestPayload.additionalData.AnthemEOBRecipientData.providerLogoName",
+            "value": "jsonRequest.requestPayloadData.data.CBSData.providerLogoName",
+            "defVal": "IngenioRx"
+        },
+        {
+            "path": "requestPayload.additionalData.AnthemEOBRecipientData.providerCompanyName",
+            "value": "jsonRequest.requestPayloadData.data.CBSData.providerCompanyName",
+            "defVal": "IngenioRx"
+        }
+    ]
+}

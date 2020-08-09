@@ -4,7 +4,7 @@ var service = require('./service');
 
 var controllers = {
     getMapping: function (req, res) {
-        service.getMapping(req.params.activity, function (error, data) {
+        service.getMapping(req.params.eventName, function (error, data) {
             res.json(error ? error : data);
         });
     },
@@ -14,7 +14,7 @@ var controllers = {
         });
     },
     convertJson: function(req, res){
-        service.convertJsonV2(req.body, function (message) {
+        service.convertJson(req.body, function (message) {
             res.json(message);
         });
     }

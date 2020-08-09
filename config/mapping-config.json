@@ -1,0 +1,8 @@
+{
+    "CAMPAIGN_NOTIFICATION_EOB_ANTHEM": "eob_anthem",
+    "CAMPAIGN_NOTIFICATION_ND_DES": "nd_des",
+    "CAMPAIGN_NOTIFICATION_HEE_EMAIL": "email_sms",
+    "CAMPAIGN_NOTIFICATION_HEE_SMS": "email_sms",
+    "ONE_CLICK_EOB": "eob",
+    "CAMPAIGN_NOTIFICATION_EOB_GUEST": "eob"
+}

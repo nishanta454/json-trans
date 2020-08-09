@@ -1,0 +1,90 @@
+{
+    "type": "object",
+    "fields": [
+        {
+            "path": "requestContext.appName",
+            "value": "jsonRequest.requestMetaData.appName",
+            "defVal": ""
+        },
+        {
+            "path": "requestContext.lineOfBusiness",
+            "value": "jsonRequest.requestMetaData.lineOfBusiness",
+            "defVal": ""
+        },
+        {
+            "path": "requestContext.conversationID",
+            "value": "jsonRequest.requestMetaData.conversationID",
+            "defVal": ""
+        },
+        {
+            "path": "requestPayload.messageData.campaignId",
+            "value": "jsonRequest.requestPayloadData.data.campaignID",
+            "defVal": ""
+        },
+        {
+            "path": "requestPayload.messageData.clientSet",
+            "value": "jsonRequest.requestPayloadData.data.clientSet",
+            "defVal": ""
+        },
+        {
+            "path": "requestPayload.messageData.clientId",
+            "value": "jsonRequest.requestPayloadData.data.clientID",
+            "defVal": ""
+        },
+        {
+            "path": "requestPayload.messageData.channel",
+            "value": "jsonRequest.requestPayloadData.data.commDeliveryChannel",
+            "defVal": "email"
+        },
+        {
+            "path": "requestPayload.messageData.language",
+            "value": "jsonRequest.requestPayloadData.data.languageIndicator",
+            "defVal": "1"
+        },
+        {
+            "path": "requestPayload.messageData.cagm.carrier",
+            "value": "jsonRequest.requestPayloadData.data.carrierID",
+            "defVal": ""
+        },
+        {
+            "path": "requestPayload.messageData.cagm.account",
+            "value": "jsonRequest.requestPayloadData.data.accountID",
+            "defVal": ""
+        },
+        {
+            "path": "requestPayload.messageData.cagm.group",
+            "value": "jsonRequest.requestPayloadData.data.groupID",
+            "defVal": ""
+        },
+        {
+            "path": "requestPayload.messageData.cagm.member",
+            "value": "jsonRequest.requestPayloadData.data.externalID",
+            "defVal": "jsonRequest.requestPayloadData.data.memberID"
+        },
+        {
+            "path": "requestPayload..additionalData.EOBRecipientData.displayName",
+            "value": "jsonRequest.requestPayloadData.data.firstName",
+            "defVal": ""
+        },
+        {
+            "path": "requestPayload..additionalData.EOBRecipientData.firstName",
+            "value": "jsonRequest.requestPayloadData.data.firstName",
+            "defVal": ""
+        },
+        {
+            "path": "requestPayload..additionalData.EOBRecipientData.lastName",
+            "value": "jsonRequest.requestPayloadData.data.lastName",
+            "defVal": ""
+        },
+        {
+            "path": "requestPayload..additionalData.EOBRecipientData.emailAddress",
+            "value": "jsonRequest.requestPayloadData.data.commContactInfo",
+            "defVal": ""
+        },
+        {
+            "path": "requestPayload..additionalData.EOBRecipientData.planName",
+            "value": "jsonRequest.requestPayloadData.data.planName",
+            "defVal": ""
+        }
+    ]
+}
