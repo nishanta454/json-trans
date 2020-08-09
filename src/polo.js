@@ -82,8 +82,11 @@ const transformer = {
         let fields = schema.fields;
         if (fields && Array.isArray(fields)) {
             if (type === ARRAY) {
+                var index = 0;
                 data.forEach(_data => {
-                    transform_field(result, _data, fields, context)
+                    result[index] = {}
+                    transform_field(result[index], _data, fields, context)
+                    index++;
                 })
             } else {
                 transform_field(result, data, fields, context)
