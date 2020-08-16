@@ -3,13 +3,8 @@ const jp = require('jsonpath');
 const ARRAY = "array";
 
 const process = function (value, defVal, _function) {
-    let result = defVal;
-    result = new Function(context.functions._function).call({
-        'value': value,
-        'defVal': defVal
-    })
-
-    return result;
+    let func = new Function("return "+_function).call();
+    return func(value, defVal);
 }
 
 const update = function (source, targetKey, targetValue) {
@@ -61,8 +56,8 @@ var transform_field = function (result, data, fields, context) {
                 value = jp.query(data, '$.' + value);
                 value = value ? value[0] : undefined;
                 if (value) {
-                    if (operation && context.functions && context.functions[operation]) {
-                        value = process(value, defVal, context.functions[operation]);
+                    if (operation) {
+                        value = process(value, defVal, operation);
                     } else if (template) {
                         value = transformer.transform(value, template, { "functions": context.functions });
                     }

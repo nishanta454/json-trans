@@ -160,13 +160,13 @@
                         "path": "drugShortName",
                         "value": "targetDrug.drugShortName",
                         "defVal": "",
-                        "operation": "getFirstChar"
+                        "operation": "function(a, b){ if(a && a.length>1) { return a.charAt(0);} return b;}"
                     },
                     {
                         "path": "fillDate",
                         "value": "fillDate",
                         "defVal": "",
-                        "operation": "dataFormate"
+                        "operation": ""
                     },
                     {
                         "path": "fillLocation",
@@ -182,7 +182,7 @@
                         "path": "nextFillDate",
                         "value": "nextFillDate",
                         "defVal": "",
-                        "operation": "dataFormate"
+                        "operation": ""
                     },
                     {
                         "path": "pharmacyName",
@@ -228,13 +228,13 @@
                         "path": "rxNumber",
                         "value": "rxNbr",
                         "defVal": "",
-                        "operation": "formateRxNumber"
+                        "operation": ""
                     },
                     {
                         "path": "rxWrtnDate",
                         "value": "rxWrtnDate",
                         "defVal": "",
-                        "operation": "dataFormate"
+                        "operation": ""
                     },
                     {
                         "path": "daySupply",

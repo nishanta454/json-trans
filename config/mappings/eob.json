@@ -2,71 +2,71 @@
     "type": "object",
     "fields": [{
         "path": "requestContext.appName",
-        "value": "jsonRequest.requestMetaData.appName",
+        "value": "requestMetaData.appName",
         "defVal": ""
     }, {
         "path": "requestContext.lineOfBusiness",
-        "value": "jsonRequest.requestMetaData.lineOfBusiness",
+        "value": "requestMetaData.lineOfBusiness",
         "defVal": ""
     }, {
         "path": "requestContext.conversationID",
-        "value": "jsonRequest.requestMetaData.conversationID",
+        "value": "requestMetaData.conversationID",
         "defVal": ""
     }, {
         "path": "requestPayload.messageData.campaignId",
-        "value": "jsonRequest.requestPayloadData.data.campaignID",
+        "value": "requestPayloadData.data.campaignID",
         "defVal": ""
     }, {
         "path": "requestPayload.messageData.clientSet",
-        "value": "jsonRequest.requestPayloadData.data.clientSet",
+        "value": "requestPayloadData.data.clientSet",
         "defVal": ""
     }, {
         "path": "requestPayload.messageData.clientId",
-        "value": "jsonRequest.requestPayloadData.data.clientID",
+        "value": "requestPayloadData.data.clientID",
         "defVal": ""
     }, {
         "path": "requestPayload.messageData.channel",
-        "value": "jsonRequest.requestPayloadData.data.commDeliveryChannel",
+        "value": "requestPayloadData.data.commDeliveryChannel",
         "defVal": "email"
     }, {
         "path": "requestPayload.messageData.language",
-        "value": "jsonRequest.requestPayloadData.data.languageIndicator",
+        "value": "requestPayloadData.data.languageIndicator",
         "defVal": "1"
     }, {
         "path": "requestPayload.messageData.cagm.carrier",
-        "value": "jsonRequest.requestPayloadData.data.carrierID",
+        "value": "requestPayloadData.data.carrierID",
         "defVal": ""
     }, {
         "path": "requestPayload.messageData.cagm.account",
-        "value": "jsonRequest.requestPayloadData.data.accountID",
+        "value": "requestPayloadData.data.accountID",
         "defVal": ""
     }, {
         "path": "requestPayload.messageData.cagm.group",
-        "value": "jsonRequest.requestPayloadData.data.groupID",
+        "value": "requestPayloadData.data.groupID",
         "defVal": ""
     }, {
         "path": "requestPayload.messageData.cagm.member",
-        "value": "jsonRequest.requestPayloadData.data.externalID",
-        "defVal": "jsonRequest.requestPayloadData.data.memberID"
+        "value": "requestPayloadData.data.externalID",
+        "defVal": "requestPayloadData.data.memberID"
     }, {
         "path": "requestPayload.additionalData.OneclickRecipientData.displayName",
-        "value": "jsonRequest.requestPayloadData.data.firstName",
+        "value": "requestPayloadData.data.firstName",
         "defVal": ""
     }, {
         "path": "requestPayload.additionalData.OneclickRecipientData.firstName",
-        "value": "jsonRequest.requestPayloadData.data.firstName",
+        "value": "requestPayloadData.data.firstName",
         "defVal": ""
     }, {
         "path": "requestPayload.additionalData.OneclickRecipientData.lastName",
-        "value": "jsonRequest.requestPayloadData.data.lastName",
+        "value": "requestPayloadData.data.lastName",
         "defVal": ""
     }, {
         "path": "requestPayload.additionalData.OneclickRecipientData.emailAddress",
-        "value": "jsonRequest.requestPayloadData.data.commContactInfo",
+        "value": "requestPayloadData.data.commContactInfo",
         "defVal": ""
     }, {
         "path": "requestPayload.additionalData.OneclickRecipientData.planName",
-        "value": "jsonRequest.requestPayloadData.data.planName",
+        "value": "requestPayloadData.data.planName",
         "defVal": ""
     }, {
         "path": "requestPayload.additionalData.OneclickRecipientData.reqxid",
