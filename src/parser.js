@@ -1,13 +1,17 @@
 const jp = require('jsonpath');
 
 let parser = {
-    parse: function (fromPayload, toPayload, dataDictonary) {
+    parse: function (fromPayload, toPayload, dataDictonary, functions) {
         dataDictonary.forEach(mapping => {
-            this.updateObject(mapping.source, mapping.target, fromPayload, toPayload)
+            var func = undefined;
+            if (mapping.function) {
+                func = functions[mapping.function]
+            }
+            this.updateObject(mapping.source, mapping.target, fromPayload, toPayload, func)
         });
         console.log(toPayload)
     },
-    updateObject: function (sourcePath, targetField, fromPayload, toPayload) {
+    updateObject: function (sourcePath, targetField, fromPayload, toPayload, func) {
         var path = jp.paths(fromPayload, '$.' + sourcePath)
         if (path && path.length > 0) {
             var prog = [];
@@ -18,12 +22,12 @@ let parser = {
                     prog.push(node)
                     var value = jp.query(fromPayload, util.createJpExp(prog, arrays));
                     if (util.findType(value[0]) == 'String' || index == path[0].length - 1) {
-                        toPayload[targetField] = value[0]
+                        toPayload[targetField] = func ? func(value[0]) : value[0]
                     } else if (util.findType(value[0]) == 'Array') {
                         stop = true;
                         arrays[node] = true;
                         if (util.findType(value[0][0]) == 'String') {
-                            toPayload[targetField] = value[0]
+                            toPayload[targetField] = func ? func(value[0]) : value[0]
                         } else {
                             if (!toPayload[node] || util.findType(toPayload[node]) != 'Array') {
                                 toPayload[node] = [];
@@ -65,23 +69,23 @@ let util = {
     shrinkJpExp: function (s, p) {
         let exp = s.replace(p.join('.'), '').replace('[*]', '')
         let nxp = []
-        exp.split('.').forEach(function (el) { 
-            if(el){
+        exp.split('.').forEach(function (el) {
+            if (el) {
                 nxp.push(el);
             }
         });
         return nxp.join('.');
     },
-    createJpExp: function(p, ar) {
-         var exp = ['$']
-         p.forEach(el => {
-             if(ar[el]){
-                exp.push(el+'[*]')
-             }else {
+    createJpExp: function (p, ar) {
+        var exp = ['$']
+        p.forEach(el => {
+            if (ar[el]) {
+                exp.push(el + '[*]')
+            } else {
                 exp.push(el)
-             }
-         })
-         return exp.join('.')
+            }
+        })
+        return exp.join('.')
     }
 }
 
@@ -137,7 +141,8 @@ var dataDictonary = [{
 },
 {
     "source": "r.n",
-    "target": "v"
+    "target": "v",
+    "function": "toUpperCaseX"
 }, {
     "source": "r.z",
     "target": "l"
@@ -158,6 +163,12 @@ var dataDictonary = [{
     "target": "tehsil"
 }]
 
-parser.parse(fromPayload, toPayload, dataDictonary);
+var functions = {
+    "toUpperCaseX": function (val) {
+        return val ? val.toUpperCase() : val;
+    }
+}
+
+parser.parse(fromPayload, toPayload, dataDictonary, functions);
 
 //module.exports = parser
