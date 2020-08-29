@@ -3,62 +3,85 @@ const jp = require('jsonpath');
 let parser = {
     parse: function (fromPayload, toPayload, dataDictonary) {
         dataDictonary.forEach(mapping => {
-            updateObject(mapping.source, mapping.target, fromPayload, toPayload)
+            this.updateObject(mapping.source, mapping.target, fromPayload, toPayload)
         });
         console.log(toPayload)
-    }
-}
-var updateObject = function (sourcePath, targetField, fromPayload, toPayload) {
-    var path = jp.paths(fromPayload, '$.' + sourcePath, 1)
-    if (path && path.length > 0) {
-        var pathProg = []
-        var stop = false;
-        path[0].forEach((node, index) => {
-            if (node != '$' && !stop) {
-                pathProg.push(node)
-                var value = jp.query(fromPayload, '$..' + node);
-                if (findType(value[0]) == 'String' || index == path[0].length - 1) {
-                    toPayload[targetField] = value[0]
-                } else if (findType(value[0]) == 'Array') {
-                    stop = true;
-                    if (findType(value[0][0]) == 'String') {
+    },
+    updateObject: function (sourcePath, targetField, fromPayload, toPayload) {
+        var path = jp.paths(fromPayload, '$.' + sourcePath)
+        if (path && path.length > 0) {
+            var prog = [];
+            var stop = false;
+            var arrays = {}
+            path[0].forEach((node, index) => {
+                if (node != '$' && !stop) {
+                    prog.push(node)
+                    var value = jp.query(fromPayload, util.createJpExp(prog, arrays));
+                    if (util.findType(value[0]) == 'String' || index == path[0].length - 1) {
                         toPayload[targetField] = value[0]
-                    } else {
-                        if (!toPayload[node] || findType(toPayload[node]) != 'Array') {
-                            toPayload[node] = [];
-                        }
-                        toPayload = toPayload[node]
-                        value[0].forEach((val, indx) => {
-                            var elem = null;
-                            if (toPayload.length > indx) {
-                                elem = toPayload[indx]
-                            } else {
-                                elem = {}
-                                toPayload.push(elem)
+                    } else if (util.findType(value[0]) == 'Array') {
+                        stop = true;
+                        arrays[node] = true;
+                        if (util.findType(value[0][0]) == 'String') {
+                            toPayload[targetField] = value[0]
+                        } else {
+                            if (!toPayload[node] || util.findType(toPayload[node]) != 'Array') {
+                                toPayload[node] = [];
                             }
-                            var sPath = sourcePath.replace(pathProg.join('.'), '').replace('[*]', '');
-                            updateObject(sPath, targetField, val, elem)
-                        })
-                        return;
+                            toPayload = toPayload[node]
+                            value[0].forEach((val, indx) => {
+                                var elem = null;
+                                if (toPayload.length > indx) {
+                                    elem = toPayload[indx]
+                                } else {
+                                    elem = {}
+                                    toPayload.push(elem)
+                                }
+                                this.updateObject(util.shrinkJpExp(sourcePath, prog), targetField, val, elem)
+                            })
+                        }
                     }
                 }
-            }
-        })
+            })
+        }
     }
 }
 
-var findType = function (s) {
-    if (s.constructor === String) {
-        return "String";
-    }
-    if (s.constructor === Array) {
-        return "Array";
-    } else if (s.constructor === Object) {
-        return "Object";
-    } else if (s.constructor === Number) {
-        return "Number";
-    } else if (s.constructor === Boolean) {
-        return "Boolean";
+let util = {
+    findType: function (s) {
+        if (s.constructor === String) {
+            return "String";
+        }
+        if (s.constructor === Array) {
+            return "Array";
+        } else if (s.constructor === Object) {
+            return "Object";
+        } else if (s.constructor === Number) {
+            return "Number";
+        } else if (s.constructor === Boolean) {
+            return "Boolean";
+        }
+    },
+    shrinkJpExp: function (s, p) {
+        let exp = s.replace(p.join('.'), '').replace('[*]', '')
+        let nxp = []
+        exp.split('.').forEach(function (el) { 
+            if(el){
+                nxp.push(el);
+            }
+        });
+        return nxp.join('.');
+    },
+    createJpExp: function(p, ar) {
+         var exp = ['$']
+         p.forEach(el => {
+             if(ar[el]){
+                exp.push(el+'[*]')
+             }else {
+                exp.push(el)
+             }
+         })
+         return exp.join('.')
     }
 }
 
@@ -87,7 +110,11 @@ var fromPayload = {
                 "line3": [{
                     "p.o.box": "11111",
                     "tehsil": "kairana"
-                }]
+                }],
+                "line4": {
+                    "nos": "nmi",
+                    "kal": "lac"
+                }
             },
             {
                 "line1": "H-278"
@@ -96,7 +123,7 @@ var fromPayload = {
                 "mobile": "9582965097",
                 "landline": "01313250615"
             }
-        },
+        }
     }
 }
 
@@ -123,10 +150,14 @@ var dataDictonary = [{
 }, {
     "source": "b.contact.addresses[*].line2",
     "target": "line2"
+}, {
+    "source": "b.contact.addresses[*].line4.nos",
+    "target": "nos"
+}, {
+    "source": "b.contact.addresses[*].line3[*].tehsil",
+    "target": "tehsil"
 }]
 
 parser.parse(fromPayload, toPayload, dataDictonary);
-
-
 
 //module.exports = parser
